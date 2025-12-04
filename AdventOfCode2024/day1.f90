@@ -1,10 +1,13 @@
 program LoadDiffSum
    use sorting
+   use filereader
    integer :: io, i, f, similarityMult, j, similarrityScoreAccumulator
+   integer :: mat(2,1000)
    integer, dimension(2000) :: a
-   integer, dimension(1000) :: b, c, e!, g
+   integer, dimension(1000) :: b, c, e, diff
    open(newunit=io, file="day1.dat", status="old", action="read")
    read(io, *) a
+   close(io)
 
    ! read input seperated into two vectors
    do i = 1,1000
@@ -12,6 +15,18 @@ program LoadDiffSum
       c(i) = a(2*i)
    end do
 
+   call readMatrixInt(m=2, n=1000, resMatrix=mat, l=8, filePath="day1.dat")
+
+   print*, "Matrix reader test:"
+   call quicksort(mat(1,:),1,1000)
+   call quicksort(mat(2,:),1,1000)
+   ! print*, mat
+   ! write(*,*) (mat(1,i), mat(2,i), new_line("a"), i = 1, 1000)
+
+   do i = 1,1000
+      diff(i) = abs(mat(1,i) - mat(2,i))
+   end do
+   print*, sum(diff)
 
    ! sort the two vectors
    call quicksort(b,1,1000)
