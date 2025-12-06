@@ -3,7 +3,7 @@ module filereader
    
    private
 
-   public readMatrixInt, readVectorString, lengthOfFile
+   public readMatrixInt, readStringArray, lengthOfFile
 contains
 
    subroutine lengthOfFile(nlines, filePath, lfp)
@@ -34,7 +34,7 @@ contains
       close(io)
    end subroutine readMatrixInt
 
-   subroutine readVectorString(resVector, n, filePath, lfp)
+   subroutine readStringArray(resVector, n, filePath, lfp)
       integer :: io
       integer, intent(in) :: n, lfp
       character(len=*), intent(inout) :: resVector(n)
@@ -43,7 +43,7 @@ contains
       open(newunit=io, file=filePath, status="old", action="read")
       read(io, *) resVector
       close(io)
-   end subroutine readVectorString
+   end subroutine readStringArray
 
 
 

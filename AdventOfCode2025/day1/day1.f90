@@ -19,7 +19,7 @@ program day1task
     allocate(rawVec(n))
     allocate(charVector(n))
     allocate(numVector(n))
-    call readVectorString(resVector=rawVec, n=n, filePath=fp, lfp=len(fp))
+    call readStringArray(resVector=rawVec, n=n, filePath=fp, lfp=len(fp))
 
     call firstChars(charVector, rawVec, n)
     call getNums(numVector, rawVec, n)
